@@ -1,0 +1,113 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-calm">
+  	<div class="buttons">
+  		<i class="icon button-icon icon ion-android-star" ng-class="favColor" ng-click="favorite()"></i>
+  	</div>
+  	<h1 class="title" style="font-family: 'YA-BOLD';">{{pc.pc_name}}</h1>
+  	<div class="buttons">
+  		<i class="icon button-icon icon ion-android-close" ng-click="hidemodalinfo()"></i>
+  	</div>
+  </ion-header-bar>
+  <ion-content scroll="true">
+
+  	<ion-slides options="{'loop': false}" slider="slider1" delegate-handle="slider1" style="width:100%;height:240px;">
+  		<ion-slide-page ng-repeat="image in pc.images" style="background:url(&quot;http://ec2-13-124-84-103.ap-northeast-2.compute.amazonaws.com/TestPc/resources/images/{{pc.imgid}}/{{image}}&quot;) no-repeat center;background-size:cover;"></ion-slide-page>
+	  </ion-slides>
+
+	  <div class="button-bar">
+  		<button ng-class="{'active': activeInfo=='1'||activeInfo=='2'}" ng-click="slideChangedInfo('0')" style="font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;" class="button button-positive button-clear button-changeInfo">PC방 정보</button>
+  		<button ng-class="{'active': activeInfo=='0'||activeInfo=='2'}" ng-click="slideChangedInfo('1')" style="font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;" class="button button-positive button-clear button-changeInfo">먹거리</button>
+  		<button ng-class="{'active': activeInfo=='0'||activeInfo=='1'}" ng-click="slideChangedInfo('2')" style="font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;" class="button button-positive button-clear button-changeInfo">파티원 구하기</button>
+	  </div>
+
+	  <ion-slide-box on-slide-changed="slideChangedInfo(index)" show-pager="false" delegate-handle="InfoDelegate">
+    	<ion-slide style="background-color: #fff;">
+      <ion-scroll class="custom">
+    		<div class="home-Advertising" style="height:40px;border-top:solid 1px #e8e8e8;">
+    			<div class="home-center-text">
+  					<img src="img/speakerphone.png" style="float:left;width:16px;height:16px;margin-left:10px;margin-right:10px;">
+  					<font style="float:left;font-size:14px;color:gray;">공지사항</font>
+  					<font style="float:right;font-size:16px;color:#387ef5;margin-right:10px;font-family: 'YA-BOLD';" ng-click="showmodalnotice()"><u>더보기</u></font><br>
+			    </div>
+    		</div>
+        <p style="color:gray;margin-left:10px;"></p>
+    		<div class="home-Advertising" style="height:40px;border-top:solid 1px #e8e8e8;">
+    			<div class="home-center-text">
+  					<img src="img/location.png" style="float:left;width:16px;height:16px;margin-left:10px;margin-right:10px;">
+  					<font style="float:left;font-size:14px;color:gray;">{{pc.address}}</font>
+  				</div>
+    		</div>
+    		<div class="home-Advertising" style="height:40px;border-top:solid 1px #e8e8e8;">
+    			<div class="home-center-text">
+  					<img src="img/walk.png" style="float:left;width:16px;height:16px;margin-left:10px;margin-right:10px;">
+  					<font style="float:left;font-size:14px;color:gray;">
+              현재 위치로부터 <font style="font-size:16px;color:#387ef5;font-family: 'YA-BOLD';">{{pc.dist}}</font> km
+            </font>
+  				</div>
+    		</div>
+        <div class="home-Advertising" style="height:40px;border-top:solid 1px #e8e8e8;">
+          <div class="home-center-text">
+            <img src="img/subway.png" style="float:left;width:16px;height:16px;margin-left:10px;margin-right:10px;">
+            <font style="float:left;font-size:14px;color:gray;">{{pc.subway}} <font style="color:gray;">/</font> {{pc.subway2}}</font>
+          </div>
+        </div>
+    		<div class="home-Advertising" style="height:40px;border-top:solid 1px #e8e8e8;">
+    			<div class="home-center-text">
+  					<img src="img/coin.png" style="float:left;width:16px;height:16px;margin-left:10px;margin-right:10px;">
+  					<font style="float:left;font-size:14px;color:gray;">요금 정보</font><br>
+  				</div>
+    		</div>
+        <p style="color:gray;margin-left:10px;white-space: pre-wrap;">{{pc.price}}</p>
+    		<div class="home-Advertising" style="height:40px;border-top:solid 1px #e8e8e8;">
+    			<div class="home-center-text">
+  					<img src="img/desktop-pc.png" style="float:left;width:16px;height:16px;margin-left:10px;margin-right:10px;">
+  					<font style="float:left;font-size:14px;color:gray;">PC 사양</font>
+  				</div>
+    		</div>
+          <p style="color:gray;margin-left:10px;white-space: pre-wrap;">{{pc.description}}</p>
+        <div class="home-Advertising" style="height:40px;border-top:solid 1px #e8e8e8;">
+          <div class="home-center-text">
+            <img src="img/theme.png" style="float:left;width:16px;height:16px;margin-left:10px;margin-right:10px;">
+            <font style="float:left;font-size:14px;color:gray;">PC방 테마</font>
+          </div>
+        </div>
+        <div style="text-align: center;margin-bottom:10px;">
+          <button ng-class="pc.foodBtn" disabled>푸드 카페</button>
+          <button ng-class="pc.autokeyboardBtn" disabled>기계식 키보드</button>
+          <button ng-class="pc.creditcardBtn" disabled>카드 결제</button>
+          <button ng-class="pc.dualmonitorBtn" disabled>듀얼 모니터</button>
+          <button ng-class="pc.androidusbBtn" disabled>Android 충전기</button>
+          <button ng-class="pc.iphoneusbBtn" disabled>iPhone 충전기</button>
+          <button ng-class="pc.wordBtn" disabled>워드 작업</button>
+          <button ng-class="pc.printerBtn" disabled>프린터 출력</button>
+          <button ng-class="pc.smokeareaBtn" disabled>흡연부스</button>
+          <button ng-class="pc.atmBtn" disabled>A T M</button>
+          <button ng-class="pc.tvplayBtn" disabled>TV 시청</button>
+          <button ng-class="pc.giftcardBtn" disabled>상품권 구매</button>
+          <button ng-class="pc.wifiBtn" disabled>Wifi</button>
+          <button ng-class="pc.steamBtn" disabled>Steam 게임</button>
+          <button ng-class="pc.parkingBtn" disabled>주차 가능</button>
+          <button ng-class="pc.coupleBtn" disabled>커플석 보유</button>
+        </div>
+    		<div style="text-align: center;border-top:solid 1px #e8e8e8;">
+  				<button class="button button-positive icon ion-ios-plus button-info-ann" style="font-family: 'YA-BOLD';border-radius:50px 50px 50px 50px;margin-top:15px;" ng-click="showmodalannpc()">&nbsp;&nbsp;&nbsp;PC방 정보 수정 / 추가</button>
+  			</div>
+        </ion-scroll>
+    	</ion-slide>
+    	<ion-slide style="background-color: #fff;">
+    		
+    	</ion-slide>
+    	<ion-slide style="background-color: #fff;">
+    		
+    	</ion-slide>
+    </ion-slide-box>
+
+  </ion-content>
+  <ion-footer-bar class="bar bar-light footer-buttons">
+  	<div class="button-bar">
+  	<button class="button button-positive button-inline icon-left ion-location button-fixed-location" style="font-size:18px;font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;" ng-click="showmodalmaps()">지도</button>
+  	<button class="button button-calm button-inline icon-left ion-mouse button-fixed-others" style="font-size:18px;font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;" ng-click="showmodalreview()">리뷰 / 건의사항</button>
+  	<button class="button button-calm button-inline icon-left ion-monitor button-fixed-others" style="font-size:18px;font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;">좌석현황 / 예약</button>
+  	</div>
+  </ion-footer-bar>
+</ion-modal-view>

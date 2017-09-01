@@ -1,0 +1,54 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-calm">
+    <div class="buttons"><i class="icon button-icon icon ion-ios-arrow-back" ng-click="hidemodalannpc()"></i></div>
+    <div class="title verimg"><img src="img/toplogo.png" style="width:50%;height:50%;"></div>
+  </ion-header-bar>
+  <ion-content scroll="true" padding="false" class="has-header">
+            <div style="padding-top:10px;text-align: center;background-color: white;">
+              <div>
+                우리동네 PC방에 등록되지 않았거나 잘못 등록된 PC방을 제보해 주세요.<br>
+                제보해 주신분들 중 추첨을 통해 소정의 선물(기프티콘)을 드립니다.
+              </div>
+
+              <form class="list" style="margin-top:10px;">
+                <ion-list>
+                  <label class="item item-input">
+                      <span class="input-label" style="text-align: center;">매장 이름</span>
+                      <input type="text" ng-model="fields.pc_name" />
+                  </label>
+                  <label class="item item-input">
+                      <span class="input-label" style="text-align: center;">매장 주소</span>
+                      <input type="text" ng-model="fields.address" />
+                  </label>
+                  <label class="item item-input">
+                      <span class="input-label" style="text-align: center;">기타 정보 / 설명</span>
+                      <input type="text" ng-model="fields.description" />
+                  </label>
+                  <label class="item item-input">
+                      <span class="input-label" style="text-align: center;">(선택) 경품 수령 연락처</span>
+                      <input type="text" ng-model="fields.phonenumber" />
+                  </label>
+                </ion-list>
+              </form>
+              <p style="font-size:18px;text-align:left;margin-top: 15px;margin-left:45px;">시설 정보</p>
+              <ion-checkbox ng-model="checkboxes.foodType" class="checkbox-announce">푸드카페</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.autokeyboardType" class="checkbox-announce">기계식키보드</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.creditcardType" class="checkbox-announce">카드결제</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.dualmonitorType" class="checkbox-announce">듀얼모니터</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.androidusbType" class="checkbox-announce">Android</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.iphoneusbType" class="checkbox-announce">iPhone</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.wordType" class="checkbox-announce">워드작업</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.printerType" class="checkbox-announce">프린터</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.smokeareaType" class="checkbox-announce">흡연부스</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.atmType" class="checkbox-announce">ATM</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.tvplayType" class="checkbox-announce">TV시청</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.giftcardType" class="checkbox-announce">게임상품권</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.wifiType" class="checkbox-announce">Wifi</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.steamType" class="checkbox-announce">Steam</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.parkingType" class="checkbox-announce">주차가능</ion-checkbox>
+              <ion-checkbox ng-model="checkboxes.coupleType" class="checkbox-announce">커플석</ion-checkbox>
+              <button ng-click="submit()" class="button button-calm button-block" style="font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;">보내기</button>
+            </div>
+            <div class="spacer" style="height: 60px;"></div>
+    </ion-content>
+</ion-modal-view>

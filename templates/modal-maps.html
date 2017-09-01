@@ -1,0 +1,15 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-calm">
+    <div class="buttons">
+      <i class="icon button-icon icon ion-ios-arrow-back" ng-click="hidemodalmaps()"></i>
+    </div>
+    <p class="title" style="font-size:15px;">{{pcLoc}}</p>
+    <div class="buttons">
+      <i class="icon button-icon icon ion-android-refresh" ng-click="pcLocation()"></i>
+      <i class="icon button-icon icon ion-android-locate" ng-click="myLocation()"></i>
+    </div>
+  </ion-header-bar>
+  <ion-content padding="false" class="has-header">
+    <div id="mapInfo" data-tap-disabled="true"></div>
+  </ion-content>
+</ion-modal-view>

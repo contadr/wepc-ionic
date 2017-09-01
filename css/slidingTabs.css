@@ -1,0 +1,74 @@
+ion-slide {
+    background-color: #f0f0f0;
+}
+
+ion-slide:nth-child(2n) {
+    background-color: #f0f0f0;
+}
+
+.slider {
+    height: 100%;
+}
+
+.slidingTabs {
+    height: 6%;
+    z-index: 10;
+}
+
+.slidingTabs .scroll {
+    height: auto;
+    min-width: 100%;
+}
+
+.slidingTabs ul {
+    background-color: #fff;
+    height: 6%;
+}
+
+.slidingTabs ul li {
+    width: 50%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    float: left;
+    margin: 0;
+    padding: 0 12px 20px 12px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: rgba(17, 193, 243, 0.4);
+    -webkit-transition: color .25s ease-in-out;
+    transition: color .25s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.slidingTabs ul li.tab-active {
+    color: #11c1f3;
+}
+
+.slidingTabs ul li .ink {
+    display: block;
+    position: absolute;
+    background: rgba(56, 147, 245, 0.8);
+    border-radius: 100%;
+    transform: scale(0);
+}
+
+.slidingTabs ul li .ink.animate {
+    -webkit-animation: ripple 0.65s linear;
+    animation: ripple 0.65s linear;
+}
+
+.slidingTabs .tab-indicator-wrapper .tab-indicator {
+    height: 100%;
+    background-color: #11c1f3;
+    width: 70px;
+    position: relative;
+}
+
+@-webkit-keyframes ripple {
+    100% {
+        opacity: 0;
+        transform: scale(2.5);
+    }
+}

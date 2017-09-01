@@ -1,0 +1,34 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-calm">
+    <div class="buttons"><i class="icon button-icon icon ion-ios-arrow-back" ng-click="hidemodallist()"></i></div>
+    <h1 class="title">{{ModallistTitle}}</h1>
+  </ion-header-bar>
+  <ion-content padding="false" class="has-header" ng-controller="ModalListCtrl" style="background-color: #f0f0f0;">
+    <div ng-repeat="pc in pcs track by $index" style="background-color:white;width:100%; height: 170px; border-top:solid 15px #f0f0f0; padding:5px;" ng-click="showmodalinfo(pc.pcroom_id, pc.dist)">
+      <div style="float:left; width:110px; height:145px;margin-right:10px;overflow: hidden;">
+        <img src="http://ec2-13-124-84-103.ap-northeast-2.compute.amazonaws.com/TestPc/resources/images/{{pc.imgid}}/{{pc.imageThumb}}" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;" />
+      </div>
+      <div style="margin-bottom: 5px;">
+        <font class="list-font-small" style="color:gray;">평점</font>&nbsp;<font class="list-font-small">{{pc.rating}}</font>
+        <font class="list-font-small" style="color:gray;margin-left:10px;">리뷰</font>&nbsp;<font class="list-font-small">없음&nbsp;&nbsp;</font>
+        <font style="font-size:16px;float:right;">&nbsp;{{pc.dist}}km&nbsp;&nbsp;</font><img src="img/info-location.png" style="width: 16px; height: 16px;float:right;">
+      </div>
+      <div style="margin-top:5px;">
+        <ion-item class="text-wrap"><font class="list-font-big" style="font-family: 'YA-BOLD';">{{pc.pc_name}}</font></ion-item>
+      </div>
+      <div style="margin-top:5px;border-top:solid #e8e8e8 1px;">
+        <font class="list-font-small" style="color:gray;">{{pc.city1Name}} {{pc.city2Name}} {{pc.city3Name}}</font>
+        <ion-item class="text-wrap"><font class="list-font-small" style="color:gray;">{{pc.address}}</font></ion-item>
+      </div>
+      <div>
+        <button ng-show="pc.isD" class="button button-assertive button-inline button-list-pd">사양</button>
+        <button ng-show="pc.isP" class="button button-positive button-inline button-list-pd">요금</button>
+        <button ng-show="pc.isS" class="button button-energized button-inline button-list-pd">좌석</button>
+      </div>
+    </div>
+    <div ng-show="!moreDataLoad" style="text-align: center;margin-top:15px;margin-bottom:10px;">
+      <i class="icon ion-ios-drag"></i>
+    </div>
+    <ion-infinite-scroll on-infinite="infiniteSpinner()" distance="1%" ng-if="moreDataLoad"></ion-infinite-scroll>
+  </ion-content>
+</ion-modal-view>

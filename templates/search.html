@@ -1,0 +1,124 @@
+<ion-view cache-view="false">
+	<ion-nav-title>
+    	<div ng-click="gpsCall()">
+        <img src="img/paper-plane.png" style="width:14px;height:14px;">&nbsp;&nbsp;<font style="font-size:15px;">{{gpsLoc}}</font>
+      </div>
+  	</ion-nav-title>
+  	<ion-content scroll="true" padding="false" class="has-header">
+  		<div class="button-bar">
+      		<button ng-class="{'active': activeLoc=='1' || activeLoc=='2'}" ng-click="slideChangedLoc('0')" style="font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;" class="button button-positive button-clear button-changeInfo">지역별</button>
+      		<button ng-class="{'active': activeLoc=='0' || activeLoc=='2'}" ng-click="slideChangedLoc('1')" style="font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;" class="button button-positive button-clear button-changeInfo">역주변</button>
+      		<button ng-class="{'active': activeLoc=='0' || activeLoc=='1'}" ng-click="slideChangedLoc('2')" style="font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;" class="button button-positive button-clear button-changeInfo">PC방 테마</button>
+    	</div>
+
+    	<ion-slide-box on-slide-changed="slideChangedLoc(index)" show-pager="false" delegate-handle="LocDelegate">
+      		<ion-slide style="background-color: #fff;">
+      			<div id="page4-container1" class="form-align">
+      				<div class="spacer" style="width:100%; height:5px;"></div>
+			        <button id="page4-button48" ng-click="step1Change(1, '서울시')" ng-class="{'active':step1== 1}" class="button button-dark  button-clear button-selectloc">· 서울</button>
+			        <button id="page4-button49" ng-click="step1Change(2, '인천시')" ng-class="{'active':step1== 2}" class="button button-dark  button-clear button-selectloc">· 인천</button>
+			        <button id="page4-button50" ng-click="step1Change(3, '경기도')" ng-class="{'active':step1== 3}" class="button button-dark  button-clear button-selectloc">· 경기</button>
+			        <button id="page4-button51" ng-click="step1Change(4, '광주시')" ng-class="{'active':step1== 4}" class="button button-dark  button-clear button-selectloc">· 광주</button>
+			        <button id="page4-button52" ng-click="step1Change(5, '대구시')" ng-class="{'active':step1== 5}" class="button button-dark  button-clear button-selectloc">· 대구</button>
+			        <button id="page4-button53" ng-click="step1Change(6, '대전시')" ng-class="{'active':step1== 6}" class="button button-dark  button-clear button-selectloc">· 대전</button>
+			        <button id="page4-button54" ng-click="step1Change(7, '부산시')" ng-class="{'active':step1== 7}" class="button button-dark  button-clear button-selectloc">· 부산</button>
+			        <button id="page4-button55" ng-click="step1Change(8, '세종시')" ng-class="{'active':step1== 8}" class="button button-dark  button-clear button-selectloc">· 세종</button>
+			        <button id="page4-button56" ng-click="step1Change(9, '울산시')" ng-class="{'active':step1== 9}" class="button button-dark  button-clear button-selectloc">· 울산</button>
+			        <button id="page4-button57" ng-click="step1Change(10, '강원도')" ng-class="{'active':step1== 10}" class="button button-dark  button-clear button-selectloc">· 강원</button>
+			        <button id="page4-button58" ng-click="step1Change(11, '경상남도')" ng-class="{'active':step1== 11}" class="button button-dark  button-clear button-selectloc">· 경남</button>
+			        <button id="page4-button59" ng-click="step1Change(12, '경상북도')" ng-class="{'active':step1== 12}" class="button button-dark  button-clear button-selectloc">· 경북</button>
+			        <button id="page4-button60" ng-click="step1Change(13, '전라남도')" ng-class="{'active':step1== 13}" class="button button-dark  button-clear button-selectloc">· 전남</button>
+			        <button id="page4-button61" ng-click="step1Change(14, '전라북도')" ng-class="{'active':step1== 14}" class="button button-dark  button-clear button-selectloc">· 전북</button>
+			        <button id="page4-button62" ng-click="step1Change(15, '충청남도')" ng-class="{'active':step1== 15}" class="button button-dark  button-clear button-selectloc">· 충남</button>
+			        <button id="page4-button63" ng-click="step1Change(16, '충청북도')" ng-class="{'active':step1== 16}" class="button button-dark  button-clear button-selectloc">· 충북</button>
+              <button id="page4-button63" ng-click="step1Change(17, '제주도')" ng-class="{'active':step1== 17}" class="button button-dark  button-clear button-selectloc">· 제주</button>
+	      		</div>
+	      		<div class="spacer" style="height: 20px;"></div>
+		      	<div id="page4-container2" class="form-align">
+			        <div id="page4-markdown4" style="text-align: center;"><font class="yaBold" style="font-size:17px;color:#387ef5;">{{step1Name}}</font></div>
+			        <button id="page4-button65" ng-click="step2Change(0, city2.code, city2.name)" ng-repeat="city2 in City2S" class="button button-dark button-clear button-selectloc">· {{city2.name}}</button>
+			    </div>
+      		</ion-slide>
+      		<ion-slide style="background-color: #fff;">
+
+      		</ion-slide>
+      		<ion-slide style="background-color: #fff;">
+      			<div class="item range" style="height: 49px;">
+  	   				<span class="input-label" style="text-align: center;">거리 
+  	   					<font style="font-size:13px;">( <font class="positive yaBold" style="font-size:18px;">{{reqDist}}</font> km이내 )</font>
+  	   				</span>
+  	   				<input type="range" max="11" min="1" ng-model="reqDist" ng-change="getDist(reqDist)">
+    	 		</div>
+    	 		<div class="spacer" data-componentid="spacer3" style="width: 268px; height: 30px;"></div>
+      			<div class="search-button-align">
+      				<button class="button button-dark button-clear search-button" ng-click="foodTheme()" ng-class="{'active':foodType== 1}">
+      					<div><img src="img/food.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+      					<div style="margin-top:-25px;"><font style="font-size:15px;">푸드카페</font></div>
+      				</button>
+      				<button class="button button-dark button-clear search-button" ng-click="autokeyboardTheme()" ng-class="{'active':autokeyboardType== 1}">
+      					<div><img src="img/autokeyboard.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+      					<div style="margin-top:-25px;"><font style="font-size:15px;">기계식 키보드</font></div>
+      				</button>
+      				<button class="button button-dark button-clear search-button" ng-click="creditcardTheme()" ng-class="{'active':creditcardType== 1}">
+      					<div><img src="img/creditcard.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+      					<div style="margin-top:-25px;"><font style="font-size:15px;">카드결제</font></div>
+      				</button>
+      				<button class="button button-dark button-clear search-button" ng-click="dualmonitorTheme()" ng-class="{'active':dualmonitorType== 1}">
+      					<div><img src="img/dualmonitor.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+      					<div style="margin-top:-25px;"><font style="font-size:15px;">듀얼 모니터</font></div>
+      				</button>
+      				<button class="button button-dark button-clear search-button" ng-click="androidusbTheme()" ng-class="{'active':androidusbType== 1}">
+      					<div><img src="img/androidusb.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+      					<div style="margin-top:-25px;"><font style="font-size:15px;">Android 충전</font></div>
+      				</button>
+      				<button class="button button-dark button-clear search-button" ng-click="iphoneusbTheme()" ng-class="{'active':iphoneusbType== 1}">
+      					<div><img src="img/iphoneusb.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+      					<div style="margin-top:-25px;"><font style="font-size:15px;">iPhone 충전</font></div>
+      				</button>
+      				<button class="button button-dark button-clear search-button" ng-click="wordTheme()" ng-class="{'active':wordType== 1}">
+      					<div><img src="img/word.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+      					<div style="margin-top:-25px;"><font style="font-size:15px;">워드 작업</font></div>
+      				</button>
+      				<button class="button button-dark button-clear search-button" ng-click="printerTheme()" ng-class="{'active':printerType== 1}">
+      					<div><img src="img/printer.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+      					<div style="margin-top:-25px;"><font style="font-size:15px;">프린터 출력</font></div>
+		      		</button>
+		      		<button class="button button-dark button-clear search-button" ng-click="smokeareaTheme()" ng-class="{'active':smokeareaType== 1}">
+		      			<div><img src="img/smokearea.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+		      			<div style="margin-top:-25px;"><font style="font-size:15px;">흡연부스</font></div>
+		      		</button>
+		      		<button class="button button-dark button-clear search-button" ng-click="atmTheme()" ng-class="{'active':atmType== 1}">
+		      			<div><img src="img/atm.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+		      			<div style="margin-top:-25px;"><font style="font-size:15px;">ATM</font></div>
+		      		</button>
+		      		<button class="button button-dark button-clear search-button" ng-click="tvplayTheme()" ng-class="{'active':tvplayType== 1}">
+		      			<div><img src="img/tvplay.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+		      			<div style="margin-top:-25px;"><font style="font-size:15px;">TV시청 가능</font></div>
+		      		</button>
+		      		<button class="button button-dark button-clear search-button" ng-click="giftcardTheme()" ng-class="{'active':giftcardType== 1}">
+		      			<div><img src="img/no-image.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+		      			<div style="margin-top:-25px;"><font style="font-size:15px;">상품권 구매</font></div>
+		      		</button>
+		      		<button class="button button-dark button-clear search-button" ng-click="wifiTheme()" ng-class="{'active':wifiType== 1}">
+		      			<div><img src="img/wifi.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+		      			<div style="margin-top:-25px;"><font style="font-size:15px;">Wifi</font></div>
+		      		</button>
+		      		<button class="button button-dark button-clear search-button" ng-click="steamTheme()" ng-class="{'active':steamType== 1}">
+		      			<div><img src="img/steam.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+		      			<div style="margin-top:-25px;"><font style="font-size:15px;">Steam 게임</font></div>
+		      		</button>
+		      		<button class="button button-dark button-clear search-button" ng-click="parkingTheme()" ng-class="{'active':parkingType== 1}">
+		      			<div><img src="img/no-image.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+		      			<div style="margin-top:-25px;"><font style="font-size:15px;">주차 가능</font></div>
+		      		</button>
+		      		<button class="button button-dark button-clear search-button" ng-click="coupleTheme()" ng-class="{'active':coupleType== 1}">
+		      			<div><img src="img/no-image.jpg" style="width:45px;height:45px;margin-top:5px;"></div>
+		      			<div style="margin-top:-25px;"><font style="font-size:15px;">커플석 보유</font></div>
+		      		</button>
+		      	</div>
+            	<button class="button button-calm button-block icon ion-search" ng-click="submitSearch()" style="font-family: 'YA-BOLD';border-radius:0px 0px 0px 0px;margin-top:15px;">&nbsp;&nbsp;&nbsp;PC방 찾기</button>
+      		</ion-slide>
+      	</ion-slide-box>
+	      		
+  	</ion-content>
+</ion-view>

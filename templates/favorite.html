@@ -1,0 +1,28 @@
+<ion-view cache-view="false">
+      <ion-nav-title>
+       <div ng-click="gpsCall()">
+        <img src="img/paper-plane.png" style="width:14px;height:14px;">&nbsp;&nbsp;<font style="font-size:15px;">{{gpsLoc}}</font>
+       </div>
+      </ion-nav-title>
+  	<ion-content padding="false" class="has-header" style="background-color: #f0f0f0;">
+  		<div ng-repeat="pc in pcs track by $index" style="background-color: white;width:100%; height: 170px; border-top:solid 15px #f0f0f0; padding:5px;" ng-click="showmodalinfo(pc.pcroom_id, pc.dist)">
+	      <div style="float:left; width:110px; height:145px;margin-right:10px;">
+	        <img src="http://ec2-13-124-84-103.ap-northeast-2.compute.amazonaws.com/TestPc/resources/images/{{pc.imgid}}/{{pc.imageThumb}}" style="display: block; width: 100%; height: 100%; margin-left: auto; margin-right: auto;" />
+	      </div>
+	      <div style="margin-bottom: 5px;">
+	        <font class="list-font-small" style="color:gray;">평점</font>&nbsp;<font class="list-font-small">{{pc.rating}}</font>
+	        <font class="list-font-small" style="color:gray;margin-left:10px;">리뷰</font>&nbsp;<font class="list-font-small">없음&nbsp;&nbsp;</font>
+	        <font style="font-size:16px;float:right;">&nbsp;{{pc.dist}}km&nbsp;&nbsp;</font><img src="img/info-location.png" style="width: 16px; height: 16px;float:right;">
+	      </div>
+	      <div style="margin-top:5px;">
+	        <ion-item class="text-wrap"><font class="list-font-big" style="font-family: 'YA-BOLD'">{{pc.pc_name}}</font></ion-item>
+	      </div>
+	      <div>
+	        <font class="list-font-small" style="color:gray;">{{pc.city1Name}} {{pc.city2Name}} {{pc.city3Name}}</font>
+	      </div>
+	      <div>
+	        <ion-item class="text-wrap"><font class="list-font-small" style="color:gray;">{{pc.address}}</font></ion-item>
+	      </div>
+	    </div>
+    </ion-content>
+</ion-view>
